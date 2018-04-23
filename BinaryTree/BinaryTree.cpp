@@ -143,6 +143,24 @@ struct Tree
 			}
 		}
 	}
+
+	void LEVEL(Node *node, int &i, int &maxLevel)
+	{
+		if (node->left != NULL)
+		{
+			i++;
+			if (maxLevel < i) maxLevel = i;
+			LEVEL(node->left, i, maxLevel);
+			i--;
+		}
+		if (node->right != NULL)
+		{
+			i++;
+			if (maxLevel < i) maxLevel = i;
+			LEVEL(node->right, i, maxLevel);
+			i--;
+		}
+	}
 };
 
 Tree CreateTree(int length);
@@ -197,6 +215,7 @@ int main()
 			break;
 		}
 		default:
+			continue;
 			break;
 		}
 	}
