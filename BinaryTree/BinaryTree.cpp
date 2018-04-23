@@ -165,48 +165,51 @@ struct Tree
 
 Tree CreateTree(int length);
 int* GetRandomNumbers(int min, int max, int size);
+void DeleteElementsInTheRange(Tree tree);
+void AddElementsInTheRange(Tree tree);
+void DeleteOddElements(Tree tree);
+void AddOddElements(Tree tree);
 
 int main()
 {
 	srand(time(NULL));
-	Tree tree;
+	Tree tree = CreateTree(15);
 	bool InProcess = true;
 	while (InProcess)
 	{
 		int count;
-		int value;
-		cout << "Enter 1 if you want to add element in the tree" << endl;
-		cout << "Enter 2 if you want to delete element in the tree" << endl;
-		cout << "Enter 3 if you want to print the tree" << endl;
-		cout << "Enter 4 if you want to create a tree with a random values" << endl;
+		cout << "Enter 1 if you want to delete the range" << endl;
+		cout << "Enter 2 if you want to print the tree" << endl;
+		cout << "Enter 3 if you want to add the range" << endl;
+		cout << "Enter 4 if you want to add odd elements" << endl;
+		cout << "Enter 5 if you want to delete odd elements" << endl;
 		cout << "Enter 0 if you want to exit" << endl;
 		cin >> count;
 		switch (count)
 		{
 		case 1:
 		{
-			cout << "Enter value you want to add: " << endl;
-			cin >> value;
-			tree.AddNode(value);
+			DeleteElementsInTheRange(tree);
 			break;
 		}
 		case 2:
 		{
-			cout << "Enter value you want to delete: " << endl;
-			cin >> value;
-			tree.DeleteNode(tree.root, value);
+			tree.PrintTree(tree.root);
 			break;
 		}
 		case 3:
 		{
-			tree.PrintTree(tree.root);
+			AddElementsInTheRange(tree);
 			break;
 		}
 		case 4:
 		{
-			cout << "Enter number of nodes in the tree: " << endl;
-			cin >> value;
-			tree = CreateTree(value);
+			AddOddElements(tree);
+			break;
+		}
+		case 5:
+		{
+			DeleteOddElements(tree);
 			break;
 		}
 		case 0:
@@ -215,11 +218,58 @@ int main()
 			break;
 		}
 		default:
-			continue;
+			InProcess = false;
 			break;
 		}
 	}
 	return 0;
+}
+
+void DeleteElementsInTheRange(Tree tree)
+{
+	int min, max;
+	cout << endl << "Enter the range you want to delete" << endl << "From: ";
+	cin >> min;
+	if (min < -99) min = -99;
+	cout << endl << "To: ";
+	cin >> max;
+	if (max > 99) max = 99;
+	for (int i = min; i <= max; i++)
+	{
+		tree.DeleteNode(tree.root, i);
+	}
+}
+
+void AddElementsInTheRange(Tree tree)
+{
+	int min, max;
+	cout << endl << "Enter the range you want to add" << endl << "From: ";
+	cin >> min;
+	if (min < -99) min = -99;
+	cout << endl << "To: ";
+	cin >> max;
+	if (max > 99) max = 99;
+	for (int i = min; i <= max; i++)
+	{
+		tree.AddNode(i);
+	}
+}
+
+void DeleteOddElements(Tree tree)
+{
+
+	for (int i = -99; i <= 99; i += 2)
+	{
+		tree.DeleteNode(tree.root, i);
+	}
+}
+
+void AddOddElements(Tree tree)
+{
+	for (int i = -99; i <= 99; i += 2)
+	{
+		tree.AddNode(i);
+	}
 }
 
 Tree CreateTree(int length)
@@ -261,4 +311,3 @@ int* GetRandomNumbers(int min, int max, int size)
 	}
 	return arr;
 }
-

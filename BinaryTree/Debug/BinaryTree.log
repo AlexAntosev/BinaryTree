@@ -1,4 +1,4 @@
 ﻿  BinaryTree.cpp
-c:\users\sasha\onedrive\документи\visual studio 2015\projects\binarytree\binarytree\binarytree.cpp(171): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\sasha\onedrive\документи\visual studio 2015\projects\binarytree\binarytree\binarytree.cpp(175): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   BinaryTree.vcxproj -> C:\Users\sasha\OneDrive\Документи\Visual Studio 2015\Projects\BinaryTree\Debug\BinaryTree.exe
   BinaryTree.vcxproj -> C:\Users\sasha\OneDrive\Документи\Visual Studio 2015\Projects\BinaryTree\Debug\BinaryTree.pdb (Full PDB)
